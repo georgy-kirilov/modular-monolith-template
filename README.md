@@ -1,1 +1,1 @@
-# modular-monolith-template
+# Modular Monolith Template
