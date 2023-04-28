@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+
+  template-startup:
+    image: ${DOCKER_REGISTRY-}template-startup
+    build:
+      context: .
+      dockerfile: Template.Startup/Dockerfile
+    environment:
+      - MessageBroker__Host=amqp://template-queue:5672
+      - MessageBroker__Username=guest
+      - MessageBroker__Password=guest
+    ports:
+      - 5000:80
+
+  template-mq:
+    image: rabbitmq:3.11.13
+    container_name: Queue
+    hostname: template-queue
+    volumes:
+      - ./.containers/queue/data/:/var/lib/rabbitmq
+      - ./.containers/queue/log/:/var/log/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
