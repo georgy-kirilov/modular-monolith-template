@@ -2,7 +2,7 @@
 
 namespace Template.Infrastructure.MessageBroker;
 
-public sealed class MassTransitPublisher : IPublisher
+internal sealed class MassTransitPublisher : IPublisher
 {
     private readonly IPublishEndpoint _publishEndpoint;
 
