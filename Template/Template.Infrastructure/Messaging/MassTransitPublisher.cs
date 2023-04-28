@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 
-namespace Template.Infrastructure.MessageBroker;
+namespace Template.Infrastructure.Messaging;
 
 internal sealed class MassTransitPublisher : IPublisher
 {

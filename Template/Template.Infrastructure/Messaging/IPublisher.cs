@@ -1,4 +1,4 @@
-﻿namespace Template.Infrastructure.MessageBroker;
+﻿namespace Template.Infrastructure.Messaging;
 
 public interface IPublisher
 {

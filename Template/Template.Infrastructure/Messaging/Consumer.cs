@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 
-namespace Template.Infrastructure.MessageBroker;
+namespace Template.Infrastructure.Messaging;
 
 public abstract class Consumer<TMessage> : IConsumer<TMessage>
     where TMessage : class

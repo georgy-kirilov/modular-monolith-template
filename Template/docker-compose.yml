@@ -8,6 +8,11 @@ services:
       context: .
       dockerfile: Template.Startup/Dockerfile
     environment:
+      # Emails
+      - EmailSender__ApiKey=<api-key>
+      - EmailSender__FromEmail=<from-email>
+      - EmailSender__FromName=<from-name>
+      # Messaging
       - MessageBroker__Host=amqp://template-queue:5672
       - MessageBroker__Username=guest
       - MessageBroker__Password=guest

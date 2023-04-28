@@ -6,20 +6,20 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Template.Infrastructure.MessageBroker;
+namespace Template.Infrastructure.Messaging;
 
-public static class MessageBrokerRegistration
+public static class MessagingRegistration
 {
-    public static IServiceCollection AddMessageBroker(this IServiceCollection services,
+    public static IServiceCollection AddMessaging(this IServiceCollection services,
         IConfiguration configuration,
-        MessageProvider messageProvider)
+        MessagingProvider messagingProvider)
     {
         services.ConfigureMessageBrokerSettings(configuration);
 
-        switch (messageProvider)
+        switch (messagingProvider)
         {
-            case MessageProvider.MassTransit:
-                services.AddMassTransitMessageProvider();
+            case MessagingProvider.MassTransit:
+                services.AddMassTransitMessagingProvider();
                 break;
 
             default:
@@ -28,7 +28,7 @@ public static class MessageBrokerRegistration
 
         return services;
     }
-    
+
     private static IServiceCollection ConfigureMessageBrokerSettings(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<MessageBrokerSettings>(
@@ -40,7 +40,7 @@ public static class MessageBrokerRegistration
         return services;
     }
 
-    private static IServiceCollection AddMassTransitMessageProvider(this IServiceCollection services)
+    private static IServiceCollection AddMassTransitMessagingProvider(this IServiceCollection services)
     {
         services.AddMassTransit(bus =>
         {
